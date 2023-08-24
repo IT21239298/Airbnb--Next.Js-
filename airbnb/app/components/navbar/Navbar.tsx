@@ -10,7 +10,7 @@ const Navbar = () => {
       >
         <Container>donee</Container>
       </div>
-      Navbar
+      Navbar my
     </div>
   );
 };
