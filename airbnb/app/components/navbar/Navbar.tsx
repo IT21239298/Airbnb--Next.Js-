@@ -8,7 +8,7 @@ const Navbar = () => {
     py-4
     border-b-[1px]"
       >
-        <Container>anuthing</Container>
+        <Container>donee</Container>
       </div>
       Navbar
     </div>
