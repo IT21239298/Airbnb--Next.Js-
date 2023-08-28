@@ -17,6 +17,20 @@ const Button: React.FC<ButtonProps> = ({
   small,
   icon,
 }) => {
-  return <button>{label}</button>;
+  return (
+    <button
+      className={`
+  relative
+  disabled:opacity-70
+  disable:cursor-not-allowed
+  rounded-lg
+  hover:opacity-80
+  transition
+  w-full
+  ${outline ? "bg-white " : "bg-rose-500"}`}
+    >
+      {label}
+    </button>
+  );
 };
 export default Button;
