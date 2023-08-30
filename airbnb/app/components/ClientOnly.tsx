@@ -17,6 +17,9 @@ const ClientOnly: React.FC<ClientOnlyProps> = ({ children }) => {
     return null;
   }
 
+  {
+    /* retunr children */
+  }
   return <>{children}</>;
 };
 export default ClientOnly;
