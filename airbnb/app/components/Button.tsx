@@ -37,9 +37,7 @@ const Button: React.FC<ButtonProps> = ({
   ${small ? "py-1" : "py-3"}
   ${small ? "text-sm" : "text-md"}
   ${small ? "font-light" : "font-semibold"}
-  ${small ? "border-[1px]" : "border-2"}
-  
-  `}
+  ${small ? "border-[1px]" : "border-2"}`}
     >
       {/* add icon */}
       {Icon && <Icon size={24} className="absolute left-4 top-3 " />}
