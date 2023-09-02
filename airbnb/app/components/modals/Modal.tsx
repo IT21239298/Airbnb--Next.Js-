@@ -67,9 +67,7 @@ const Modal: React.FC<ModalProps> = ({
           <div
             className={`translate duration-300 h-full
             ${showModel ? "translate-y-0" : "translate-y-full"}   
-            ${showModel ? "opacity-100" : "opacity-0"}
-             
-            `}
+            ${showModel ? "opacity-100" : "opacity-0"}  `}
           >
             <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
               {/* Headr */}
