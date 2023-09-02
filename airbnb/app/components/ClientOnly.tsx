@@ -18,7 +18,6 @@ const ClientOnly: React.FC<ClientOnlyProps> = ({ children }) => {
   }
 
   {
-    /* retunr children */
   }
   return <>{children}</>;
 };
