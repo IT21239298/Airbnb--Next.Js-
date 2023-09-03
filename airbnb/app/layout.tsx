@@ -23,7 +23,6 @@ export default function RootLayout({
           <Modal actionLabel="Submit" title="Hello World" isOpen />
           <Navbar />
         </ClientOnly>
-
         {children}
       </body>
     </html>
