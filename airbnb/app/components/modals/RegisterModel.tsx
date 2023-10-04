@@ -11,8 +11,8 @@ import { error } from "console";
 import Modal from "./Modal";
 
 const RegisterModel = () => {
-  const RegisterModel = useRegisterModal();
-  const [isLoading, setisLoading] = useState(false);
+  const registerModel = useRegisterModal();
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -27,28 +27,28 @@ const RegisterModel = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setisLoading(true);
+    setIsLoading(true);
 
     axios
       .post("api/register", data)
       .then(() => {
-        RegisterModel.onClose();
+        registerModel.onClose();
       })
       .catch((error) => {
         console.log(error);
       })
       .finally(() => {
-        setisLoading(false);
+        setIsLoading(false);
       });
   };
 
   return (
     <Modal
       disabled={isLoading}
-      isOpen={RegisterModel.isOpen}
+      isOpen={registerModel.isOpen}
       title="Register"
-      actionLabel={"Continue"}
-      onClose={RegisterModel.onClose}
+      actionLabel="Continue"
+      onClose={registerModel.onClose}
       onSubmit={handleSubmit(onSubmit)}
     />
   );
