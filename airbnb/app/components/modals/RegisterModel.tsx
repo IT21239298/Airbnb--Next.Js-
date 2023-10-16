@@ -11,6 +11,7 @@ import { error } from "console";
 import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
+import toast from "react-hot-toast";
 
 const RegisterModel = () => {
   const registerModel = useRegisterModal();
@@ -37,7 +38,7 @@ const RegisterModel = () => {
         registerModel.onClose();
       })
       .catch((error) => {
-        console.log(error);
+        toast.error("Somthing Went Wrong");
       })
       .finally(() => {
         setIsLoading(false);
@@ -51,6 +52,23 @@ const RegisterModel = () => {
       <Input
         id="email"
         label="Email"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <Input
+        id="name"
+        label="Name"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <Input
+        id="password"
+        type="password"
+        label="passowrd"
         disabled={isLoading}
         register={register}
         errors={errors}
