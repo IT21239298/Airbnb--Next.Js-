@@ -8,7 +8,7 @@ const Search = () => {
       <div className="flex flex-row items-center justify-between">
         <div className="text-sm font-semibold px-6">anything</div>
         <div className="hidden sm:block text-sm font-semibold px-6 border-x-[1px] flex-1 text-center">
-          fuck
+          Sithum
         </div>
         <div className="text-sm pl-6 pr-2 text-gray-600 flex flex-row items-center gap-3">
           <div className="hidden sm:block"> Add Guests</div>
