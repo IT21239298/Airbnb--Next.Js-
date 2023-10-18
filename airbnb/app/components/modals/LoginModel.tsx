@@ -1,5 +1,5 @@
 "use client";
-
+import { signIn } from "next-auth/react";
 import axios from "axios";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
@@ -14,8 +14,10 @@ import Heading from "../Heading";
 import Input from "../inputs/Input";
 import toast from "react-hot-toast";
 import Button from "../Button";
+import { useRouter } from "next/navigation";
 
 const LoginModel = () => {
+  const router = useRouter();
   const registerModel = useRegisterModal();
   const LoginModel = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +28,6 @@ const LoginModel = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: "",
       email: "",
       password: "",
     },
@@ -35,22 +36,26 @@ const LoginModel = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    axios
-      .post("api/register", data)
-      .then(() => {
-        registerModel.onClose();
-      })
-      .catch((error) => {
-        toast.error("Somthing went wrong");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    signIn("credentials", {
+      ...data,
+      redirect: false,
+    }).then((callback) => {
+      setIsLoading(false);
+
+      if (callback?.ok) {
+        toast.success("Logged in");
+        router.refresh();
+        LoginModel.onClose();
+      }
+      if (callback?.error) {
+        toast.error(callback.error);
+      }
+    });
   };
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
+      <Heading title="Welcome Back" subtitle="Login to your account!" />
 
       <Input
         id="email"
@@ -60,14 +65,7 @@ const LoginModel = () => {
         errors={errors}
         required
       />
-      <Input
-        id="name"
-        label="Name"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
+
       <Input
         id="password"
         type="password"
@@ -120,7 +118,7 @@ const LoginModel = () => {
     <Modal
       disabled={isLoading}
       isOpen={LoginModel.isOpen}
-      title="Register"
+      title="Login"
       actionLabel="Continue"
       onClose={LoginModel.onClose}
       onSubmit={handleSubmit(onSubmit)}
